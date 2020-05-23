@@ -10,13 +10,13 @@ using TesteCapgemini.Domain.Interfaces.Services;
 
 namespace TesteCapgemini.Domain.Services
 {
-    public class ServicePedido : IServicePedido
+    public class ServiceImportacao : IServiceImportacao
     {
 
-        private readonly IRepositoryPedido _repositoryPedido;
+        private readonly IRepositoryImportacao _repositoryPedido;
         private readonly IMapper _mapper;
 
-        public ServicePedido(IRepositoryPedido repositoryPedido,
+        public ServiceImportacao(IRepositoryImportacao repositoryPedido,
                              IMapper mapper)
         {
             _repositoryPedido = repositoryPedido;

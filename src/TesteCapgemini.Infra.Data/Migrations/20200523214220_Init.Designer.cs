@@ -10,8 +10,8 @@ using TesteCapgemini.Infra.Data.Persistence;
 namespace TesteCapgemini.Infra.Data.Migrations
 {
     [DbContext(typeof(TesteCapgeminiContext))]
-    [Migration("20200523050837_ChangeMap2")]
-    partial class ChangeMap2
+    [Migration("20200523214220_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace TesteCapgemini.Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("TesteCapgemini.Domain.Entities.ImportacaoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataImportacao")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ImportacaoModel");
+                });
 
             modelBuilder.Entity("TesteCapgemini.Domain.Entities.PedidoModel", b =>
                 {
@@ -31,6 +46,9 @@ namespace TesteCapgemini.Infra.Data.Migrations
                     b.Property<DateTime>("DataEntrega")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ImportacaoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("NomeProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -40,11 +58,21 @@ namespace TesteCapgemini.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("ValorUnitario")
-                        .HasColumnType("decimal(2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ImportacaoId");
+
                     b.ToTable("Pedido");
+                });
+
+            modelBuilder.Entity("TesteCapgemini.Domain.Entities.PedidoModel", b =>
+                {
+                    b.HasOne("TesteCapgemini.Domain.Entities.ImportacaoModel", "Importacao")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("ImportacaoId")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

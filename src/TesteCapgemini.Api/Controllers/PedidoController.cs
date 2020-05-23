@@ -13,13 +13,13 @@ namespace TesteCapgemini.Api.Controllers
     [ApiController]
     public class PedidoController : ControllerBase
     {
-        private readonly IServicePedido _servicePedido;
+        private readonly IServiceImportacao _serviceImportacao;
         private readonly Presenter _presenter;
 
-        public PedidoController(IServicePedido servicePedido,
+        public PedidoController(IServiceImportacao serviceImportacao,
                                  Presenter presenter)
         {
-            _servicePedido = servicePedido;
+            _serviceImportacao = serviceImportacao;
             _presenter = presenter;
         }
 
@@ -28,7 +28,7 @@ namespace TesteCapgemini.Api.Controllers
         [ProducesResponseType(typeof(IEnumerable<PedidoResponse>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ImportarLista(IFormFile file)
         {
-            _presenter.Handler(await _servicePedido.ImportarLista(file));
+            _presenter.Handler(await _serviceImportacao.ImportarLista(file));
 
             return _presenter.ContentResult;
         }

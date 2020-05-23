@@ -9,5 +9,8 @@ namespace TesteCapgemini.Domain.Entities
         public int Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
         public DateTime DataEntrega { get; set; }
+        public int ImportacaoId { get; set; }
+        public virtual ImportacaoModel Importacao { get; set; }
+
     }
 }

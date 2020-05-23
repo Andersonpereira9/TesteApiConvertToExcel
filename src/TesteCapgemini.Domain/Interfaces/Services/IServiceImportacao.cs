@@ -5,7 +5,7 @@ using TesteCapgemini.Domain.Arguments;
 
 namespace TesteCapgemini.Domain.Interfaces.Services
 {
-    public interface IServicePedido
+    public interface IServiceImportacao
     {
         Task<IEnumerable<PedidoResponse>> ImportarLista(IFormFile request);
     }

@@ -19,6 +19,21 @@ namespace TesteCapgemini.Infra.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("TesteCapgemini.Domain.Entities.ImportacaoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataImportacao")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Importacao");
+                });
+
             modelBuilder.Entity("TesteCapgemini.Domain.Entities.PedidoModel", b =>
                 {
                     b.Property<int>("Id")
@@ -28,6 +43,9 @@ namespace TesteCapgemini.Infra.Data.Migrations
 
                     b.Property<DateTime>("DataEntrega")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ImportacaoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NomeProduto")
                         .IsRequired()
@@ -42,7 +60,17 @@ namespace TesteCapgemini.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ImportacaoId");
+
                     b.ToTable("Pedido");
+                });
+
+            modelBuilder.Entity("TesteCapgemini.Domain.Entities.PedidoModel", b =>
+                {
+                    b.HasOne("TesteCapgemini.Domain.Entities.ImportacaoModel", "Importacao")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("ImportacaoId")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

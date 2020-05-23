@@ -28,8 +28,8 @@ namespace TesteCapgemini.Api.Configuration
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddScoped<IServicePedido, ServicePedido>();
-            services.AddScoped<IRepositoryPedido, RepositoryPedido>();
+            services.AddScoped<IServiceImportacao, ServiceImportacao>();
+            services.AddScoped<IRepositoryImportacao, RepositoryImportacao>();
             services.AddScoped<TesteCapgeminiContext>();
             services.AddScoped<Presenter>();
 

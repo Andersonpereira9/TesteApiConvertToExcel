@@ -3,7 +3,7 @@ using TesteCapgemini.Domain.Entities;
 
 namespace TesteCapgemini.Domain.Interfaces.Repositories
 {
-    public interface IRepositoryPedido
+    public interface IRepositoryImportacao
     {
         IEnumerable<PedidoModel> AdicionarPedidos(List<PedidoModel> request);
     }
