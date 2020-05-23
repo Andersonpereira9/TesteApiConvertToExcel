@@ -3,7 +3,6 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using TesteCapgemini.Domain.Arguments;
 using TesteCapgemini.Domain.Entities;
@@ -32,8 +31,9 @@ namespace TesteCapgemini.Domain.Extensions
                         DataEntrega = Convert.ToDateTime(fileExcel.Cells[row, 1].Value.ToString().Trim()),
                         NomeProduto = fileExcel.Cells[row, 2].Value.ToString().Trim(),
                         Quantidade = Convert.ToInt32(fileExcel.Cells[row, 3].Value.ToString().Trim()),
-                        ValorUnitario = Math.Round(Convert.ToDecimal(fileExcel.Cells[row, 4].Value.ToString().Trim()), 2)
-
+                        ValorUnitario = decimal.Round(Convert.ToDecimal
+                                               (fileExcel.Cells[row, 4].Value
+                                               .ToString().Trim()), 2, MidpointRounding.AwayFromZero)
                     });
                 }
 
@@ -44,7 +44,6 @@ namespace TesteCapgemini.Domain.Extensions
 
         public async static Task<IEnumerable<PedidoResponse>> VerificaArquivoExcel(this IFormFile file)
         {
-
             var response = new List<PedidoResponse>();
 
             if (file == null || file.Length <= 0)
