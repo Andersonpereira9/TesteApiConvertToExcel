@@ -8,6 +8,11 @@ namespace TesteCapgemini.Infra.Data.Persistence.Repositories
     {
 
         protected readonly TesteCapgeminiContext _context;
+
+        public RepositoryPedido(TesteCapgeminiContext context)
+        {
+            _context = context;
+        }
         public IEnumerable<PedidoModel> AdicionarPedidos(List<PedidoModel> request)
         {
 

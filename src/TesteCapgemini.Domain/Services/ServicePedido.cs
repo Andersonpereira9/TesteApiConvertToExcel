@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using TesteCapgemini.Domain.Arguments;
 using TesteCapgemini.Domain.Extensions;
 using TesteCapgemini.Domain.Interfaces.Repositories;
@@ -23,7 +24,7 @@ namespace TesteCapgemini.Domain.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<PedidoResponse> ImportarLista(IFormFile request)
+        public async Task<IEnumerable<PedidoResponse>> ImportarLista(IFormFile request)
         {
 
             if (request == null || request.Length <= 0)
@@ -31,13 +32,12 @@ namespace TesteCapgemini.Domain.Services
 
             if (!Path.GetExtension(request.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
                 return null;
+                
+            var lista = await request.Import();
 
-            var lista = request.Import();
-
-            var result = _mapper.Map<IEnumerable<PedidoResponse>>
+            return _mapper.Map<IEnumerable<PedidoResponse>>
                      (_repositoryPedido.AdicionarPedidos(lista));
-
-            return result;
+            
         }
     }
 }

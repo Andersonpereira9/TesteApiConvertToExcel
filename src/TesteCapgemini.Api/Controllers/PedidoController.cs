@@ -23,12 +23,12 @@ namespace TesteCapgemini.Api.Controllers
             _presenter = presenter;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route(nameof(ImportarLista))]
         [ProducesResponseType(typeof(IEnumerable<PedidoResponse>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ImportarLista(IFormFile file)
         {
-            _presenter.Handler(_servicePedido.ImportarLista(file));
+            _presenter.Handler(await _servicePedido.ImportarLista(file));
 
             return _presenter.ContentResult;
         }
