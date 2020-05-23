@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 using TesteCapgemini.Api.Controllers.Base;
+using TesteCapgemini.Domain.Entities;
 using TesteCapgemini.Domain.Interfaces.Repositories;
 using TesteCapgemini.Domain.Interfaces.Services;
 using TesteCapgemini.Domain.Services;

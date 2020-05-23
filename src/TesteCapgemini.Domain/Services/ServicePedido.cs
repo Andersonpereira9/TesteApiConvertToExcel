@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using TesteCapgemini.Domain.Arguments;
 using TesteCapgemini.Domain.Extensions;
@@ -18,7 +17,7 @@ namespace TesteCapgemini.Domain.Services
         private readonly IMapper _mapper;
 
         public ServicePedido(IRepositoryPedido repositoryPedido,
-                              IMapper mapper)
+                             IMapper mapper)
         {
             _repositoryPedido = repositoryPedido;
             _mapper = mapper;
@@ -26,18 +25,16 @@ namespace TesteCapgemini.Domain.Services
 
         public async Task<IEnumerable<PedidoResponse>> ImportarLista(IFormFile request)
         {
+            var validaArquivo = request.VerificaArquivoExcel();
 
-            if (request == null || request.Length <= 0)
-                return null;
+            if (validaArquivo != null)
+                return await validaArquivo;
 
-            if (!Path.GetExtension(request.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
-                return null;
-                
             var lista = await request.Import();
 
             return _mapper.Map<IEnumerable<PedidoResponse>>
-                     (_repositoryPedido.AdicionarPedidos(lista));
-            
+                           (_repositoryPedido.AdicionarPedidos(lista));
+
         }
     }
 }

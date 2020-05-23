@@ -1,8 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using TesteCapgemini.Domain.Entities;
 
 namespace TesteCapgemini.Domain.Validation.Pedido

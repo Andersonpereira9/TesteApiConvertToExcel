@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using TesteCapgemini.Domain.Arguments;
 using TesteCapgemini.Domain.Entities;
 
 namespace TesteCapgemini.Domain.Extensions
@@ -38,6 +39,21 @@ namespace TesteCapgemini.Domain.Extensions
             }
 
             return lista;
+        }
+
+        public async static Task<IEnumerable<PedidoResponse>> VerificaArquivoExcel(this IFormFile file)
+        {
+
+            var response = new List<PedidoResponse>();
+
+            if (file == null || file.Length <= 0)
+                response.Add(new PedidoResponse("O arquivo é inválido", true));
+
+            if (!Path.GetExtension(file.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
+                response.Add(new PedidoResponse("O formato do arquivo é inválido", true));            
+
+            return response;
+
         }
     }
 }
