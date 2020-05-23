@@ -3,13 +3,14 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using TesteCapgemini.Domain.Arguments;
 using TesteCapgemini.Domain.Entities;
 
 namespace TesteCapgemini.Domain.Extensions
 {
-    public static class ImportExcel
+    public static class ExcelExtensions
     {
         public async static Task<List<PedidoModel>> Import(this IFormFile file)
         {
@@ -31,7 +32,7 @@ namespace TesteCapgemini.Domain.Extensions
                         DataEntrega = Convert.ToDateTime(fileExcel.Cells[row, 1].Value.ToString().Trim()),
                         NomeProduto = fileExcel.Cells[row, 2].Value.ToString().Trim(),
                         Quantidade = Convert.ToInt32(fileExcel.Cells[row, 3].Value.ToString().Trim()),
-                        ValorUnitario = Convert.ToDecimal(fileExcel.Cells[row, 4].Value.ToString().Trim())
+                        ValorUnitario = Math.Round(Convert.ToDecimal(fileExcel.Cells[row, 4].Value.ToString().Trim()), 2)
 
                     });
                 }
