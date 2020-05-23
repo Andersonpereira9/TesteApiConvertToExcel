@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TesteCapgemini.Domain.Arguments;
+using TesteCapgemini.Domain.Entities;
 using TesteCapgemini.Domain.Extensions;
 using TesteCapgemini.Domain.Interfaces.Repositories;
 using TesteCapgemini.Domain.Interfaces.Services;
@@ -13,17 +15,17 @@ namespace TesteCapgemini.Domain.Services
     public class ServiceImportacao : IServiceImportacao
     {
 
-        private readonly IRepositoryImportacao _repositoryPedido;
+        private readonly IRepositoryImportacao _repositoryImportacao;
         private readonly IMapper _mapper;
 
-        public ServiceImportacao(IRepositoryImportacao repositoryPedido,
+        public ServiceImportacao(IRepositoryImportacao repositoryImportacao,
                              IMapper mapper)
         {
-            _repositoryPedido = repositoryPedido;
+            _repositoryImportacao = repositoryImportacao;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<PedidoResponse>> ImportarLista(IFormFile request)
+        public async Task<IEnumerable<ImportacaoListaResponse>> ImportarLista(IFormFile request)
         {
             var validaArquivo = request.VerificaArquivoExcel();
 
@@ -32,13 +34,19 @@ namespace TesteCapgemini.Domain.Services
             
             var lista = await request.Import();
 
-            var validaPedidos = await lista.ValidaPedidos();
+            var validaImportacao = await lista.ValidaImportacao();
 
-            if (validaPedidos.Count() > 0)
-                return validaPedidos;
+            if (validaImportacao.Count() > 0)
+                return validaImportacao;
 
-            return _mapper.Map<IEnumerable<PedidoResponse>>
-                           (_repositoryPedido.AdicionarPedidos(lista));
+            var importacao = new ImportacaoModel
+            {
+                Pedidos = lista,
+                DataImportacao = DateTime.Now
+            };
+
+            return _mapper.Map<IEnumerable<ImportacaoListaResponse>>
+                          (_repositoryImportacao.AdicionarImportacao(importacao));
 
         }
     }

@@ -5,6 +5,6 @@ namespace TesteCapgemini.Domain.Interfaces.Repositories
 {
     public interface IRepositoryImportacao
     {
-        IEnumerable<PedidoModel> AdicionarPedidos(List<PedidoModel> request);
+        ImportacaoModel AdicionarImportacao(ImportacaoModel request);
     }
 }

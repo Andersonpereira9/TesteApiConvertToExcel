@@ -25,7 +25,7 @@ namespace TesteCapgemini.Api.Controllers
 
         [HttpPost]
         [Route(nameof(ImportarLista))]
-        [ProducesResponseType(typeof(IEnumerable<PedidoResponse>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<ImportacaoListaResponse>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ImportarLista(IFormFile file)
         {
             _presenter.Handler(await _serviceImportacao.ImportarLista(file));

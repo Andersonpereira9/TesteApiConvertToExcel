@@ -8,10 +8,10 @@ namespace TesteCapgemini.Domain.Extensions
 {
     public static class ListaExtensions
     {
-        public async static Task<IEnumerable<PedidoResponse>> ValidaPedidos(this List<PedidoModel> lista)
+        public async static Task<IEnumerable<ImportacaoListaResponse>> ValidaImportacao(this List<PedidoModel> lista)
         {
 
-            var response = new List<PedidoResponse>();
+            var response = new List<ImportacaoListaResponse>();
             int linhaExcel = 1;
 
             foreach (var item in lista)
@@ -19,16 +19,16 @@ namespace TesteCapgemini.Domain.Extensions
                 linhaExcel++;
 
                 if (item.DataEntrega == null || item.DataEntrega <= DateTime.Now)
-                    response.Add(new PedidoResponse("Data de entrega inválida na linha " + linhaExcel , true));
+                    response.Add(new ImportacaoListaResponse("Data de entrega inválida na linha " + linhaExcel , true));
 
                 if (item.NomeProduto == null || item.NomeProduto.Length > 50)
-                    response.Add(new PedidoResponse("Nome do produto inválido na linha " + linhaExcel, true));
+                    response.Add(new ImportacaoListaResponse("Nome do produto inválido na linha " + linhaExcel, true));
 
                 if (item.Quantidade <= 0)
-                    response.Add(new PedidoResponse("Quantidade inválida na linha " + linhaExcel, true));
+                    response.Add(new ImportacaoListaResponse("Quantidade inválida na linha " + linhaExcel, true));
 
                 if (item.ValorUnitario <= 0)
-                    response.Add(new PedidoResponse("Valor unitário inválido na linha " + linhaExcel, true));
+                    response.Add(new ImportacaoListaResponse("Valor unitário inválido na linha " + linhaExcel, true));
             }
 
             return response;

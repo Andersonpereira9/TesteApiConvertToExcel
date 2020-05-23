@@ -11,6 +11,7 @@ namespace TesteCapgemini.Domain.Arguments
         public int Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
         public DateTime DataEntrega { get; set; }
+        public decimal ValorTotal { get; set; }
 
         public PedidoResponse() { }
         public PedidoResponse(string message, bool error) : base(message, error) { }

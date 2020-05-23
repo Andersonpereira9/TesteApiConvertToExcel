@@ -42,15 +42,15 @@ namespace TesteCapgemini.Domain.Extensions
             return lista;
         }
 
-        public async static Task<IEnumerable<PedidoResponse>> VerificaArquivoExcel(this IFormFile file)
+        public async static Task<IEnumerable<ImportacaoListaResponse>> VerificaArquivoExcel(this IFormFile file)
         {
-            var response = new List<PedidoResponse>();
+            var response = new List<ImportacaoListaResponse>();
 
             if (file == null || file.Length <= 0)
-                response.Add(new PedidoResponse("O arquivo é inválido", true));
+                response.Add(new ImportacaoListaResponse("O arquivo é inválido", true));
 
             if (!Path.GetExtension(file.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
-                response.Add(new PedidoResponse("O formato do arquivo é inválido", true));            
+                response.Add(new ImportacaoListaResponse("O formato do arquivo é inválido", true));            
 
             return response;
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TesteCapgemini.Domain.Entities;
+﻿using TesteCapgemini.Domain.Entities;
 using TesteCapgemini.Domain.Interfaces.Repositories;
 
 namespace TesteCapgemini.Infra.Data.Persistence.Repositories
@@ -13,12 +12,12 @@ namespace TesteCapgemini.Infra.Data.Persistence.Repositories
         {
             _context = context;
         }
-        public IEnumerable<PedidoModel> AdicionarPedidos(List<PedidoModel> request)
+        public ImportacaoModel AdicionarImportacao(ImportacaoModel request)
         {
 
-            _context.AddRange(request);
-
+            _context.Add(request);
             _context.SaveChanges();
+
             return request;
         }
     }
