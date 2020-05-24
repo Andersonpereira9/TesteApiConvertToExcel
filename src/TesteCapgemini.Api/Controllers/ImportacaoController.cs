@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using TesteCapgemini.Api.Controllers.Base;
@@ -11,12 +10,12 @@ namespace TesteCapgemini.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class PedidoController : ControllerBase
+    public class ImportacaoController : ControllerBase
     {
         private readonly IServiceImportacao _serviceImportacao;
         private readonly Presenter _presenter;
 
-        public PedidoController(IServiceImportacao serviceImportacao,
+        public ImportacaoController(IServiceImportacao serviceImportacao,
                                  Presenter presenter)
         {
             _serviceImportacao = serviceImportacao;
@@ -25,7 +24,7 @@ namespace TesteCapgemini.Api.Controllers
 
         [HttpPost]
         [Route(nameof(ImportarLista))]
-        [ProducesResponseType(typeof(IEnumerable<ImportacaoListaResponse>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ImportacaoListaResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ImportarLista(IFormFile file)
         {
             _presenter.Handler(await _serviceImportacao.ImportarLista(file));

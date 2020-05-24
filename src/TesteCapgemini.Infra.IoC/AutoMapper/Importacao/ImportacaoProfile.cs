@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TesteCapgemini.Domain.Arguments;
 using TesteCapgemini.Domain.Entities;
 
@@ -15,9 +14,18 @@ namespace TesteCapgemini.Infra.IoC.AutoMapper.Importacao
             CreateMap<ImportacaoModel, ImportacaoListaResponse>()
               .ForMember(d => d.Id, o => o.MapFrom(m => m.Id))
               .ForMember(d => d.DataImportacao, o => o.MapFrom(m => m.DataImportacao))
-              //.ForMember(d => d.MenorData, o => o.MapFrom(m => m.Pedidos.Select(s => s.DataEntrega).OrderBy
-              //.ForMember(d => d.Quantidade, o => o.MapFrom(m => m.Quantidade))
+              .ForMember(d => d.QuantidadeItens, o => o.MapFrom(m => m.Pedidos.Select(s => s.Quantidade).Sum()))
+              .ForMember(d => d.ValorTotal, o => o.MapFrom(m => m.Pedidos.Select(s => s.ValorUnitario).Sum()))
+              .ForMember(d => d.MenorData, o => o.MapFrom(m => m.Pedidos.Select(s => s.DataEntrega)
+                                                                        .OrderBy(o => o)
+                                                                        .FirstOrDefault()))
               ;
+
+            CreateMap<List<PedidoModel>, ImportacaoModel>()
+              .ForMember(d => d.DataImportacao, o => o.MapFrom(m => DateTime.Now))
+              .ForMember(d => d.Pedidos, o => o.MapFrom(m => m))
+              ;
+
         }
     }
 }

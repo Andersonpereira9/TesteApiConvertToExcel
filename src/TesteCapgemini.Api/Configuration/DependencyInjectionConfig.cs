@@ -9,6 +9,7 @@ using TesteCapgemini.Domain.Interfaces.Services;
 using TesteCapgemini.Domain.Services;
 using TesteCapgemini.Infra.Data.Persistence;
 using TesteCapgemini.Infra.Data.Persistence.Repositories;
+using TesteCapgemini.Infra.IoC.AutoMapper.Importacao;
 using TesteCapgemini.Infra.IoC.AutoMapper.Pedido;
 
 namespace TesteCapgemini.Api.Configuration
@@ -23,6 +24,7 @@ namespace TesteCapgemini.Api.Configuration
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new PedidoProfile());
+                mc.AddProfile(new ImportacaoProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

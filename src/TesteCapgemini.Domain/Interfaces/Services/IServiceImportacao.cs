@@ -7,6 +7,6 @@ namespace TesteCapgemini.Domain.Interfaces.Services
 {
     public interface IServiceImportacao
     {
-        Task<IEnumerable<ImportacaoListaResponse>> ImportarLista(IFormFile request);
+        Task<ImportacaoListaResponse> ImportarLista(IFormFile request);
     }
 }
