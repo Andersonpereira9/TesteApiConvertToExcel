@@ -11,6 +11,7 @@ namespace TesteCapgemini.Infra.Data.Persistence
 
         }
 
+        public DbSet<ImportacaoModel> Importacao { get; set; }
         public DbSet<PedidoModel> Pedido { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

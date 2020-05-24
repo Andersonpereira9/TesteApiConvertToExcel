@@ -13,6 +13,7 @@ namespace TesteCapgemini.Infra.IoC.AutoMapper.Pedido
               .ForMember(d => d.NomeProduto, o => o.MapFrom(m => m.NomeProduto))
               .ForMember(d => d.DataEntrega, o => o.MapFrom(m => m.DataEntrega))
               .ForMember(d => d.Quantidade, o => o.MapFrom(m => m.Quantidade))
+              .ForMember(d => d.ValorTotal, o => o.MapFrom(m => m.Quantidade * m.ValorUnitario))
               ;
 
         }

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +26,7 @@ namespace TesteCapgemini.Domain.Services
 
         public async Task<ImportacaoListaResponse> ImportarLista(IFormFile request)
         {
+
             var validaArquivo = request.VerificaArquivoExcel();
 
             if (validaArquivo.Result.Count() > 0 )
@@ -44,6 +44,25 @@ namespace TesteCapgemini.Domain.Services
             return _mapper.Map<ImportacaoListaResponse>
                           (_repositoryImportacao.AdicionarImportacao(importacao));
 
+        }
+
+        public async Task<ImportacaoPorIdResponse> ObterImportacaoPorId(int id)
+        {
+            
+            var importacao = await _repositoryImportacao.ObterImportacaoPorId(id);
+
+            if (importacao == null)
+                return new ImportacaoPorIdResponse("Importacão não encontrada", true);
+            
+            return _mapper.Map<ImportacaoPorIdResponse>(importacao);            
+        }
+
+        public async Task<IEnumerable<ImportacaoListaResponse>> ObterImportacoes()
+        {
+
+            var lista = await _repositoryImportacao.ObterImportacoes();
+
+            return _mapper.Map<IEnumerable<ImportacaoListaResponse>>(lista);
         }
     }
 }
