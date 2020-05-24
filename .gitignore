@@ -11,3 +11,4 @@
 /src/TesteCapgemini.Infra.Data/obj
 /src/TesteCapgemini.Infra.IoC/bin/Debug/netcoreapp3.1
 /src/TesteCapgemini.Infra.IoC/obj
+/.vs/TesteCapgemini/v15/Server/sqlite3
