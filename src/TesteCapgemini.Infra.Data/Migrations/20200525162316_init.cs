@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TesteCapgemini.Infra.Data.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ImportacaoModel",
+                name: "Importacao",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -17,7 +17,7 @@ namespace TesteCapgemini.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImportacaoModel", x => x.Id);
+                    table.PrimaryKey("PK_Importacao", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,9 +36,9 @@ namespace TesteCapgemini.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_Pedido", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pedido_ImportacaoModel_ImportacaoId",
+                        name: "FK_Pedido_Importacao_ImportacaoId",
                         column: x => x.ImportacaoId,
-                        principalTable: "ImportacaoModel",
+                        principalTable: "Importacao",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -55,7 +55,7 @@ namespace TesteCapgemini.Infra.Data.Migrations
                 name: "Pedido");
 
             migrationBuilder.DropTable(
-                name: "ImportacaoModel");
+                name: "Importacao");
         }
     }
 }

@@ -10,8 +10,8 @@ using TesteCapgemini.Infra.Data.Persistence;
 namespace TesteCapgemini.Infra.Data.Migrations
 {
     [DbContext(typeof(TesteCapgeminiContext))]
-    [Migration("20200523214614_importacao")]
-    partial class importacao
+    [Migration("20200525162535_changedecimal")]
+    partial class changedecimal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
