@@ -21,7 +21,8 @@ namespace TesteCapgemini.Infra.Data.Persistence.Map
                  .IsRequired();
 
             builder.Property(f => f.ValorUnitario)
-                 .IsRequired();
+                 .IsRequired()
+                 .HasColumnType("decimal(18,2)"); ;
 
             builder.ToTable("Pedido");
         }

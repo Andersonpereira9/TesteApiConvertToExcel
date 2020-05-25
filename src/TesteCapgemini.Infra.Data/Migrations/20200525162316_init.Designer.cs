@@ -10,8 +10,8 @@ using TesteCapgemini.Infra.Data.Persistence;
 namespace TesteCapgemini.Infra.Data.Migrations
 {
     [DbContext(typeof(TesteCapgeminiContext))]
-    [Migration("20200523214220_Init")]
-    partial class Init
+    [Migration("20200525162316_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,7 @@ namespace TesteCapgemini.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImportacaoModel");
+                    b.ToTable("Importacao");
                 });
 
             modelBuilder.Entity("TesteCapgemini.Domain.Entities.PedidoModel", b =>
