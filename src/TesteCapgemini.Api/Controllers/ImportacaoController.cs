@@ -45,7 +45,7 @@ namespace TesteCapgemini.Api.Controllers
 
         [HttpGet]
         [Route(nameof(ObterImportacaoPorId))]
-        [ProducesResponseType(typeof(IEnumerable<PedidoResponse>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ImportacaoPorIdResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ObterImportacaoPorId(int id)
         {
             _presenter.Handler(await _serviceImportacao.ObterImportacaoPorId(id));

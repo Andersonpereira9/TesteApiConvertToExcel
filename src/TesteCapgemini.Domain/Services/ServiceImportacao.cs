@@ -29,12 +29,12 @@ namespace TesteCapgemini.Domain.Services
 
             var validaArquivo = request.VerificaArquivoExcel();
 
-            if (validaArquivo.Result.Count() > 0 )
-                return  new ImportacaoListaResponse(validaArquivo.Result);
-            
+            if (validaArquivo.Result.Count() > 0)
+                return new ImportacaoListaResponse(validaArquivo.Result);
+
             var lista = await request.Import();
 
-            var validaImportacao = await lista.ValidaImportacao();
+            var validaImportacao = lista.ValidaImportacao();
 
             if (validaImportacao.Count() > 0)
                 return new ImportacaoListaResponse(validaImportacao);
@@ -48,13 +48,13 @@ namespace TesteCapgemini.Domain.Services
 
         public async Task<ImportacaoPorIdResponse> ObterImportacaoPorId(int id)
         {
-            
+
             var importacao = await _repositoryImportacao.ObterImportacaoPorId(id);
 
             if (importacao == null)
-                return new ImportacaoPorIdResponse("Importacão não encontrada", true);
-            
-            return _mapper.Map<ImportacaoPorIdResponse>(importacao);            
+                return new ImportacaoPorIdResponse ( "Importacão não encontrada", false );
+
+            return _mapper.Map<ImportacaoPorIdResponse>(importacao);
         }
 
         public async Task<IEnumerable<ImportacaoListaResponse>> ObterImportacoes()

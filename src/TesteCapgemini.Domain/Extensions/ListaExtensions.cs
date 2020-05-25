@@ -8,7 +8,7 @@ namespace TesteCapgemini.Domain.Extensions
 {
     public static class ListaExtensions
     {
-        public async static Task<List<string>> ValidaImportacao(this List<PedidoModel> lista)
+        public static List<string> ValidaImportacao(this List<PedidoModel> lista)
         {
 
             var errors = new List<string>();
@@ -18,7 +18,7 @@ namespace TesteCapgemini.Domain.Extensions
             {
                 linhaExcel++;
 
-                if (item.DataEntrega == null || item.DataEntrega <= DateTime.Now)
+                if (item.DataEntrega == null || item.DataEntrega.Date <= DateTime.Now.Date)
                     errors.Add("Data de entrega inválida na linha " + linhaExcel);
 
                 if (item.NomeProduto == null || item.NomeProduto.Length > 50)
