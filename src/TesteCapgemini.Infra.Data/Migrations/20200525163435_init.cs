@@ -28,7 +28,7 @@ namespace TesteCapgemini.Infra.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeProduto = table.Column<string>(maxLength: 50, nullable: false),
                     Quantidade = table.Column<int>(nullable: false),
-                    ValorUnitario = table.Column<decimal>(nullable: false),
+                    ValorUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DataEntrega = table.Column<DateTime>(nullable: false),
                     ImportacaoId = table.Column<int>(nullable: false)
                 },
