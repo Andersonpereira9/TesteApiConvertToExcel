@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TesteTemplate.Infra.Data\TesteTemplate.Infra.Data.csproj" />
     <ProjectReference Include="..\TesteTemplate.Infra.IoC\TesteTemplate.Infra.IoC.csproj" />
+    <ProjectReference Include="..\TesteTemplate.Service\TesteTemplate.Service.csproj" />
   </ItemGroup>
 
 

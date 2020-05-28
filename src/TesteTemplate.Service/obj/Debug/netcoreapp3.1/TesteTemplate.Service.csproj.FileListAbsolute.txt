@@ -1,0 +1,12 @@
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\bin\Debug\netcoreapp3.1\TesteTemplate.Service.deps.json
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\bin\Debug\netcoreapp3.1\TesteTemplate.Service.dll
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\bin\Debug\netcoreapp3.1\TesteTemplate.Service.pdb
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\bin\Debug\netcoreapp3.1\TesteTemplate.Domain.dll
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\bin\Debug\netcoreapp3.1\TesteTemplate.Domain.pdb
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.csprojAssemblyReference.cache
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.csproj.CoreCompileInputs.cache
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.AssemblyInfoInputs.cache
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.AssemblyInfo.cs
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.csproj.CopyComplete
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.dll
+C:\Users\Altran\Desktop\TesteTemplate\src\TesteTemplate.Service\obj\Debug\netcoreapp3.1\TesteTemplate.Service.pdb

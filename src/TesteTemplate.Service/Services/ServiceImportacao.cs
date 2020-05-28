@@ -9,7 +9,7 @@ using TesteTemplate.Domain.Extensions;
 using TesteTemplate.Domain.Interfaces.Repositories;
 using TesteTemplate.Domain.Interfaces.Services;
 
-namespace TesteTemplate.Domain.Services
+namespace TesteTemplate.Service
 {
     public class ServiceImportacao : IServiceImportacao
     {

@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
 using TesteTemplate.Api.Controllers.Base;
-using TesteTemplate.Domain.Entities;
 using TesteTemplate.Domain.Interfaces.Repositories;
 using TesteTemplate.Domain.Interfaces.Services;
-using TesteTemplate.Domain.Services;
 using TesteTemplate.Infra.Data.Persistence;
 using TesteTemplate.Infra.Data.Persistence.Repositories;
 using TesteTemplate.Infra.IoC.AutoMapper.Importacao;
 using TesteTemplate.Infra.IoC.AutoMapper.Pedido;
+using TesteTemplate.Service;
 
 namespace TesteTemplate.Api.Configuration
 {
