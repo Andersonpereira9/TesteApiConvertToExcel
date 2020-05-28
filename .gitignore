@@ -2,13 +2,13 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/src/TesteCapgemini.Api/bin/Debug/netcoreapp3.1
-/.vs/TesteCapgemini/DesignTimeBuild
-/src/TesteCapgemini.Api/obj
-/src/TesteCapgemini.Domain/bin/Debug/netcoreapp3.1
-/src/TesteCapgemini.Domain/obj
-/src/TesteCapgemini.Infra.Data/bin/Debug/netcoreapp3.1
-/src/TesteCapgemini.Infra.Data/obj
-/src/TesteCapgemini.Infra.IoC/bin/Debug/netcoreapp3.1
-/src/TesteCapgemini.Infra.IoC/obj
-/.vs/TesteCapgemini/v15/Server/sqlite3
+/src/TesteTemplate.Api/bin/Debug/netcoreapp3.1
+/.vs/TesteTemplate/DesignTimeBuild
+/src/TesteTemplate.Api/obj
+/src/TesteTemplate.Domain/bin/Debug/netcoreapp3.1
+/src/TesteTemplate.Domain/obj
+/src/TesteTemplate.Infra.Data/bin/Debug/netcoreapp3.1
+/src/TesteTemplate.Infra.Data/obj
+/src/TesteTemplate.Infra.IoC/bin/Debug/netcoreapp3.1
+/src/TesteTemplate.Infra.IoC/obj
+/.vs/TesteTemplate/v15/Server/sqlite3
